@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/MathiuZuri/AcademiaMicroserv.git
+          uri: https://github.com/carl0s8466/jost
           searchPaths: config-data
           default-label: main
   security:
