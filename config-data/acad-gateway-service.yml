@@ -1,0 +1,47 @@
+server:
+  port: 8085
+
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8090/eureka
+      defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
+
+  instance:
+    #hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: asistencia-route
+          uri: lb://acad-asistencia-service
+          predicates:
+            - Path=/api/asistencias/**
+          filters:
+            - AuthFilter
+
+        - id: asistenciaHistorico-route
+          uri: lb://acad-asistencia-service
+          predicates:
+            - Path=/api/asistenciaHistoricos/**
+          filters:
+            - AuthFilter
+
+        - id: libretasNotas-route
+          uri: lb://acad-asistencia-service
+          predicates:
+            - Path=/api/libretasNotas/**
+          filters:
+            - AuthFilter
+
+        - id: acad-notasAreaCurricular-service
+          uri: lb://acad-notasAreaCurricular-service
+          predicates:
+            - Path=/api/notasAreaCurriculars/**
+          filters:
+            - AuthFilter
