@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -69,4 +70,30 @@ public class AuthUserServiceImpl implements AuthUserService {
             return null;
         return new TokenDto(token);
     }
+
+
+    public AuthUserServiceImpl(AuthUserRepository authUserRepository) {
+        this.authUserRepository = authUserRepository;
+    }
+
+    @Override
+    public List<AuthUser> getAllUsers() {
+        return authUserRepository.findAll(); // Método heredado de JpaRepository
+    }
+
+    @Override
+    public Optional<AuthUser> getUserById(int id) {
+        return authUserRepository.findById(id); // Método heredado de JpaRepository
+    }
+
+    @Override
+    public AuthUser saveUser(AuthUser authUser) {
+        return authUserRepository.save(authUser); // Método heredado de JpaRepository (para guardar y actualizar)
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        authUserRepository.deleteById(id); // Método heredado de JpaRepository
+    }
+
 }

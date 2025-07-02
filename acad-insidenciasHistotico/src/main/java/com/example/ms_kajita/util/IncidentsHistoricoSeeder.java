@@ -1,16 +1,45 @@
-package com.example.ms_kajita.util; // Make sure this package is correct
+package com.example.ms_kajita.util;
 
-import com.example.ms_kajita.entity.InsidenciaHistorico; // Make sure this is the correct package for your entity
-import com.example.ms_kajita.repository.InsidenciaHistoricoRepository; // Make sure this is the correct package for your repository
+import com.example.ms_kajita.entity.InsidenciaHistorico;
+import com.example.ms_kajita.repository.InsidenciaHistoricoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Random; // Necesitamos esto para números aleatorios
 
 @Component
 public class IncidentsHistoricoSeeder implements CommandLineRunner {
 
     private final InsidenciaHistoricoRepository insidenciaHistoricoRepository;
+    private final Random random = new Random(); // Instancia de Random
+
+    // Arrays de datos de ejemplo para generar incidencias más variadas
+    private static final String[] TITULOS = {
+            "Problema de Acceso a Plataforma",
+            "Error en Calificación de Examen",
+            "Duda sobre Horario de Clase",
+            "Inconveniente con Material del Curso",
+            "Soporte Técnico Requerido",
+            "Queja sobre Docente",
+            "Solicitud de Certificado",
+            "Problema de Conectividad en Aula",
+            "Reclamo por Asistencia",
+            "Consulta de Créditos Académicos"
+    };
+
+    private static final String[] DESCRIPCIONES = {
+            "El estudiante reporta que no puede iniciar sesión en el campus virtual.",
+            "Hay un error en la nota final del examen de cálculo para el alumno.",
+            "Se presenta una confusión con el nuevo horario de clases de química.",
+            "El material de lectura del módulo 3 no carga correctamente.",
+            "Se necesita asistencia para configurar el IDE para la clase de programación.",
+            "Un grupo de estudiantes expresa descontento con la metodología del profesor X.",
+            "El alumno requiere una constancia de estudios para trámites externos.",
+            "La conexión a internet en el laboratorio de cómputo es intermitente.",
+            "El estudiante afirma que su asistencia fue marcada incorrectamente el día 15.",
+            "Se solicita información sobre el avance de créditos para graduación."
+    };
 
     public IncidentsHistoricoSeeder(InsidenciaHistoricoRepository insidenciaHistoricoRepository) {
         this.insidenciaHistoricoRepository = insidenciaHistoricoRepository;
@@ -18,42 +47,36 @@ public class IncidentsHistoricoSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Only insert data if the table is empty
         if (insidenciaHistoricoRepository.count() == 0) {
-            // Creating instances of InsidenciasHistorico
-            InsidenciaHistorico i1 = new InsidenciaHistorico();
-            // idInsidenciasHistorico is @GeneratedValue, so we don't set it here
-            i1.setFechaRegistro(LocalDateTime.now().minusHours(2));
-            i1.setTitulo("Problema con Acceso a Plataforma");
-            i1.setDescripccion("El estudiante X no puede acceder al campus virtual desde ayer.");
-            i1.setUsuarioIdUsuario(1001L); // Example user ID (Long)
-            i1.setDocenteIdDocente(201); // Example teacher ID (Integer)
-            i1.setPlanAcademicoIdPlanAcademico(301); // Example academic plan ID (Integer)
-            // @Transient fields (usuarioNombre, docenteNombre, planAcademicoNombre) are not set here.
-            // They are populated by your service layer when data is retrieved.
+            System.out.println("Insertando 10 datos de incidencias históricas aleatorias...");
 
-            InsidenciaHistorico i2 = new InsidenciaHistorico();
-            i2.setFechaRegistro(LocalDateTime.now().minusDays(1));
-            i2.setTitulo("Retraso en Entrega de Tarea");
-            i2.setDescripccion("Docente Y reporta que varios alumnos no entregaron la tarea a tiempo.");
-            i2.setUsuarioIdUsuario(1002L);
-            i2.setDocenteIdDocente(202);
-            i2.setPlanAcademicoIdPlanAcademico(302);
+            for (int i = 0; i < 10; i++) { // Bucle para insertar 10 registros
+                InsidenciaHistorico incidencia = new InsidenciaHistorico();
 
-            InsidenciaHistorico i3 = new InsidenciaHistorico();
-            i3.setFechaRegistro(LocalDateTime.now().minusDays(3));
-            i3.setTitulo("Duda sobre Calificación");
-            i3.setDescripccion("Estudiante Z tiene una consulta sobre la calificación de su último examen.");
-            i3.setUsuarioIdUsuario(1003L);
-            i3.setDocenteIdDocente(203);
-            i3.setPlanAcademicoIdPlanAcademico(301); // Same plan ID as i1 for variety
+                // Generar fecha de registro aleatoria (ej. dentro de los últimos 60 días)
+                LocalDateTime randomDate = LocalDateTime.now()
+                        .minusDays(random.nextInt(60)) // Días aleatorios atrás (0 a 59)
+                        .minusHours(random.nextInt(24)) // Horas aleatorias
+                        .minusMinutes(random.nextInt(60)) // Minutos aleatorios
+                        .minusSeconds(random.nextInt(60)); // Segundos aleatorios
+                incidencia.setFechaRegistro(randomDate);
 
-            // Save the entities to the database
-            insidenciaHistoricoRepository.save(i1);
-            insidenciaHistoricoRepository.save(i2);
-            insidenciaHistoricoRepository.save(i3);
+                // Seleccionar título y descripción aleatorios
+                incidencia.setTitulo(TITULOS[random.nextInt(TITULOS.length)]);
+                incidencia.setDescripccion(DESCRIPCIONES[random.nextInt(DESCRIPCIONES.length)]);
 
-            System.out.println("Datos de incidencias históricas de ejemplo insertados correctamente.");
+                // Generar IDs aleatorios para usuario, docente y plan académico
+                // idUsuario: del 1 al 5
+                incidencia.setUsuarioIdUsuario(1L + random.nextInt(5)); // Genera 1, 2, 3, 4, 5
+                // idDocente: del 201 al 205 (ejemplo)
+                incidencia.setDocenteIdDocente(201 + random.nextInt(5));
+                // idPlanAcademico: del 301 al 305 (ejemplo)
+                incidencia.setPlanAcademicoIdPlanAcademico(301 + random.nextInt(5));
+
+                insidenciaHistoricoRepository.save(incidencia);
+            }
+
+            System.out.println("10 datos de incidencias históricas aleatorias insertados correctamente.");
         } else {
             System.out.println("Las incidencias históricas ya existen, no se insertaron datos.");
         }

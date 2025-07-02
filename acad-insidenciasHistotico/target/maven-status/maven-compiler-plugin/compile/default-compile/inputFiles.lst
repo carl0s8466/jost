@@ -1,0 +1,14 @@
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\util\IncidentsHistoricoSeeder.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\repository\InsidenciaHistoricoRepository.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\dto\DocenteDto.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\service\impl\InsidenciaHistoricoServiceImpl.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\controller\InsidenciaHistoricoController.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\service\InsidenciaHistoricoService.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\MsAsistenciaApplication.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\dto\PlanAcademicoDto.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\entity\InsidenciaHistorico.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\feing\DocenteFeing.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\feing\UsuarioFeign.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\config\OpenApiConfig.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\feing\PlanAcademicoFeing.java
+I:\pryects\acad\AcademiaMicroserv-master\acad-insidenciasHistotico\src\main\java\com\example\ms_kajita\dto\AuthUser.java

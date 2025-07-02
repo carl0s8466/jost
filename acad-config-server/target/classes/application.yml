@@ -1,5 +1,5 @@
 server:
-  port: 7071
+  port: 7070
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/carl0s8466/jost
+          uri: https://github.com/MathiuZuri/AcademiaMicroServicios.git
           searchPaths: config-data
           default-label: main
   security:

@@ -10,6 +10,35 @@ import java.time.LocalDateTime;
 @Entity
 public class InsidenciaHistorico {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idInsidenciasHistorico")
+    private Integer idInsidenciasHistorico;
+
+    @Column(name = "fechaRegistro")
+    private LocalDateTime fechaRegistro; // Corrected typo in field name for consistency
+
+    @Column(name = "titulo")
+    private String titulo;
+    @Column(name = "descripccion")
+    private String descripccion;// Changed to Long to match BIGINT in SQL
+
+    @Column(name = "usuario_id_usuario")
+    private Long usuarioIdUsuario; // Changed to Long to match BIGINT in SQL
+    @Transient
+    private String usuarioNombre;
+
+    @Column(name = "Docente_idDocente")
+    private Integer docenteIdDocente;
+    @Transient
+    private String docenteNombre;
+
+    @Column(name = "PlanAcademico_idPlanAcademico")
+    private Integer planAcademicoIdPlanAcademico;
+    @Transient
+    private String planAcademicoNombre;
+
+
     public Integer getIdInsidenciasHistorico() {
         return idInsidenciasHistorico;
     }
@@ -103,33 +132,7 @@ public class InsidenciaHistorico {
         this.planAcademicoNombre = planAcademicoNombre;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idInsidenciasHistorico")
-    private Integer idInsidenciasHistorico;
 
-    @Column(name = "fechaReghistro")
-    private LocalDateTime fechaRegistro; // Corrected typo in field name for consistency
-
-    @Column(name = "titulo")
-    private String titulo;
-    @Column(name = "descripccion")
-    private String descripccion;// Changed to Long to match BIGINT in SQL
-
-    @Column(name = "usuario_id_usuario")
-    private Long usuarioIdUsuario; // Changed to Long to match BIGINT in SQL
-    @Transient
-    private String usuarioNombre;
-
-    @Column(name = "Docente_idDocente")
-    private Integer docenteIdDocente;
-    @Transient
-    private String docenteNombre;
-
-    @Column(name = "PlanAcademico_idPlanAcademico")
-    private Integer planAcademicoIdPlanAcademico;
-    @Transient
-    private String planAcademicoNombre;
 
     @Override
     public String toString() {

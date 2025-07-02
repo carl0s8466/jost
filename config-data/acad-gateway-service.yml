@@ -21,7 +21,7 @@ spring:
         - id: asistencia-route
           uri: lb://acad-asistencia-service
           predicates:
-            - Path=/api/asistencias/**
+            - Path=/asistencias/**
           filters:
             - AuthFilter
 

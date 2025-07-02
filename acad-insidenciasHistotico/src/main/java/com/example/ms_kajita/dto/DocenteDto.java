@@ -2,6 +2,15 @@ package com.example.ms_kajita.dto;
 
 public class DocenteDto {
 
+    private Integer idDocente;
+    private String nombre;
+    private String apellidoMaterno;
+    private String apellidoPaterno;
+    private String fechaNacimiento;
+    private String profecion;
+    private String tiempoEnsenanza;
+    private String dni;
+
     public Integer getidDocente() {
         return idDocente;
     }
@@ -22,14 +31,7 @@ public class DocenteDto {
 
 
 
-    private Integer idDocente;
-    private String nombre;
-    private String apellidoMaterno;
-    private String apellidoPaterno;
-    private String fechaNacimiento;
-    private String profecion;
-    private String tiempoEnsenanza;
-    private String dni;
+
 
     @Override
     public String toString() {

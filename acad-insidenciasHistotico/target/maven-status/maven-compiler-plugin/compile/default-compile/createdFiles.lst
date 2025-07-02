@@ -1,0 +1,7 @@
+com\example\ms_kajita\entity\InsidenciaHistorico.class
+com\example\ms_kajita\dto\PlanAcademicoDto.class
+com\example\ms_kajita\config\OpenApiConfig.class
+com\example\ms_kajita\controller\InsidenciaHistoricoController.class
+com\example\ms_kajita\feing\PlanAcademicoFeing.class
+com\example\ms_kajita\repository\InsidenciaHistoricoRepository.class
+com\example\ms_kajita\util\IncidentsHistoricoSeeder.class
